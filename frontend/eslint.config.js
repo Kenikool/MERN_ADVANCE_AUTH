@@ -23,6 +23,7 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       "react/prop-types": "off",
+      "react/no-unescaped-entities": "off",
       ...reactHooks.configs.recommended.rules,
       "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
       "react-refresh/only-export-components": [
