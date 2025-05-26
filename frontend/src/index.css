@@ -1,0 +1,10 @@
+@import "tailwindcss";
+body {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: whitesmoke;
+  background-color: black;
+  margin-top: 60px;
+}
