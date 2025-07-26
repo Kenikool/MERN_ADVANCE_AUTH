@@ -2,6 +2,7 @@ import {
   VERIFICATION_EMAIL_TEMPLATE,
   PASSWORD_RESET_REQUEST_TEMPLATE,
   PASSWORD_RESET_SUCCESS_TEMPLATE,
+  ROBOTIC_WELCOME_EMAIL_TEMPLATE,
 } from "./emailTemplates.js";
 import { mailtrapClient, sender } from "./mailtrap.config.js";
 
@@ -27,7 +28,7 @@ export const sendVerificationEmail = async (email, verificationToken) => {
     throw new Error(`Error sending verification email: ${error}`);
   }
 };
-
+//dashboardUrl;
 export const sendWelcomeEmail = async (email, name) => {
   const recipient = [{ email }];
 
@@ -35,13 +36,10 @@ export const sendWelcomeEmail = async (email, name) => {
     const response = await mailtrapClient.send({
       from: sender,
       to: recipient,
-      template_uuid: "6bb98ab5-932b-4c8e-b02f-e1b1c430a14e",
-      template_variables: {
-        company_info_name: "Kenikool Tech World",
-        name: name,
-      },
+      subject: "Welcome to Kenikool Tech World",
+      html: ROBOTIC_WELCOME_EMAIL_TEMPLATE.replace("{name}", name),
+      category: "Welcome Email",
     });
-
     console.log("Welcome email sent successfully", response);
   } catch (error) {
     console.error(`Error sending welcome email`, error);
